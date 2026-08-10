@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-    DOCKER_IMAGE  = "your-docker-hub-username/static-website"
+    DOCKER_IMAGE  = "alanjose2929/static-website"
     GIT_REPO_NAME = "python-flask"
     GIT_USER_NAME = "AlanJose2712"
   }
@@ -57,7 +57,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
           sh '''
-            git config user.email "xyz@gmail.com"
+            git config user.email "alanjosep4949@gmail.com"
             git config user.name "${GIT_USER_NAME}"
 
             sed -i "s|image: .*|image: ${DOCKER_IMAGE}:${BUILD_NUMBER}|g" k8s/deployment.yaml
