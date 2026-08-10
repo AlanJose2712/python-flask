@@ -55,7 +55,11 @@ pipeline {
 
     stage('Update Deployment File') {
       steps {
-        withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+ withCredentials([usernamePassword(
+            credentialsId: 'github',
+            usernameVariable: 'GITHUB_USERNAME',
+            passwordVariable: 'GITHUB_TOKEN'
+        )]) {
           sh '''
             git config user.email "alanjosep4949@gmail.com"
             git config user.name "${GIT_USER_NAME}"
